@@ -11,6 +11,7 @@ import {
   FileUpload,
   ActionGroup,
   Button,
+  Divider,
 } from "@patternfly/react-core";
 
 type NewRealmFormProps = {
@@ -25,7 +26,7 @@ export const NewRealmForm = ({ realm }: NewRealmFormProps) => {
           <Text component="h1">Create Realm</Text>
         </TextContent>
       </PageSection>
-
+      <Divider />
       <PageSection variant="light">
         <Form isHorizontal>
           <FormGroup label="Upload JSON file" fieldId="kc-realm-filename">
