@@ -19,12 +19,11 @@ export const App = () => {
   };
   return (
     <Page header={<Header />} sidebar={<PageNav />}>
-      {/* <PageSection variant="light"> */}
-        <NewRealmForm/>
-        {/* <DataLoader loader={loader}>
+      <PageSection variant="light">
+        <DataLoader loader={loader}>
           {(clients) => <ClientList clients={clients} />}
-        </DataLoader> */}
-      {/* </PageSection> */}
+        </DataLoader>
+      </PageSection>
     </Page>
   );
 };
