@@ -51,7 +51,7 @@ export const NewRealmForm = ({ realm }: NewRealmFormProps) => {
               // onChange={this.handleTextInputChange2}
             />
           </FormGroup>
-          <FormGroup label="Enabled" fieldID="kc-realm-enabled-switch">
+          <FormGroup label="Enabled" fieldId="kc-realm-enabled-switch">
             <Switch
               id="kc-realm-enabled-switch"
               name="kc-realm-enabled-switch"
