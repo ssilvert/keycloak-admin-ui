@@ -96,8 +96,9 @@ export const PartialImportDialog = (props: PartialImportProps) => {
         {importEnabled && (
           <StackItem>
             <Divider />
-            TODO: This section will include "Choose the resources..." and "If a
-            resource already exists...."
+            TODO: This section will include{" "}
+            <strong>Choose the resources...</strong> and{" "}
+            <strong>If a resource already exists....</strong>
             <Divider />
           </StackItem>
         )}
