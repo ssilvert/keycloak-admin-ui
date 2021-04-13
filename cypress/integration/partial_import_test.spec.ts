@@ -11,7 +11,6 @@ describe("Partial import test", () => {
   const realmSettings = new RealmSettings();
 
   beforeEach(function () {
-    console.log("beforeEach");
     keycloakBefore();
     loginPage.logIn();
     sidebarPage.goToRealmSettings();
