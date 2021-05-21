@@ -91,6 +91,9 @@
   },
   "partial-import": {
     "partialImportHeaderText": "Partial import allows you to import users, clients, and resources from a previously exported json file.",
-    "import": "Import"
+    "import": "Import",
+    "FAIL": "Fail import",
+    "SKIP": "Skip",
+    "OVERWRITE": "Overwrite"
   }
 }
