@@ -21,7 +21,7 @@
     "start:cypress-tests": "cypress run"
   },
   "dependencies": {
-    "@patternfly/patternfly": "^4.102.1",
+    "@patternfly/patternfly": "^4.103.6",
     "@patternfly/react-core": "4.115.1",
     "@patternfly/react-icons": "4.10.1",
     "@patternfly/react-table": "4.26.7",
