@@ -90,7 +90,10 @@
     "defaultLocale": "Default locale"
   },
   "partial-import": {
-    "partialImportHeaderText": "Partial import allows you to import users, clients, and resources from a previously exported json file.",
+    "partialImportHeaderText": "Partial import allows you to import users, clients, and other resources from a previously exported json file.",
+    "selectRealm": "Select realm",
+    "chooseResources": "Choose the resources you want to import",
+    "selectIfResourceExists": "If a resource already exists, specify what should be done",
     "import": "Import",
     "FAIL": "Fail import",
     "SKIP": "Skip",
