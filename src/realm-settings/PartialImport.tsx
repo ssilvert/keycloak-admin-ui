@@ -49,7 +49,7 @@ type ImportedRealm = {
 };
 
 type NonRoleResource = "users" | "clients" | "groups" | "identityProviders";
-type RoleResource = "roles.realm" | "roles.client";
+type RoleResource = "realmRoles" | "clientRoles";
 type Resource = NonRoleResource | RoleResource;
 
 type CollisionOption = "FAIL" | "SKIP" | "OVERWRITE";
@@ -75,8 +75,8 @@ export const PartialImportDialog = (props: PartialImportProps) => {
     clients: false,
     groups: false,
     identityProviders: false,
-    "roles.realm": false,
-    "roles.client": false,
+    realmRoles: false,
+    clientRoles: false,
   };
 
   const [resourcesToImport, setResourcesToImport] = useState<ResourceChecked>(
@@ -167,7 +167,11 @@ export const PartialImportDialog = (props: PartialImportProps) => {
 
     const mapper = (realm: ImportedRealm) => {
       return (
-        <SelectOption key={realm.id} value={realm}>
+        <SelectOption
+          key={realm.id}
+          value={realm}
+          data-testid={realm.id + "-select-option"}
+        >
           {realm.realm || realm.id}
         </SelectOption>
       );
@@ -240,10 +244,10 @@ export const PartialImportDialog = (props: PartialImportProps) => {
   const itemCount = (resource: Resource) => {
     if (!isFileSelected) return 0;
 
-    if (targetHasRealmRoles() && resource === "roles.realm")
+    if (targetHasRealmRoles() && resource === "realmRoles")
       return targetRealm.roles!.realm!.length;
 
-    if (targetHasClientRoles() && resource == "roles.client")
+    if (targetHasClientRoles() && resource == "clientRoles")
       return clientRolesCount(targetRealm.roles!.client!);
 
     if (!targetRealm[resource as NonRoleResource]) return 0;
@@ -280,11 +284,12 @@ export const PartialImportDialog = (props: PartialImportProps) => {
             name={resource}
             isChecked={resourcesToImport[resource]}
             onChange={handleResourceCheckBox}
+            data-testid={resource + "-checkbox"}
           />
           <DataListItemCells
             dataListCells={[
               <DataListCell key={resource}>
-                <span>
+                <span data-testid={resource + "-count"}>
                   {itemCount(resource)} {resourceDisplayName}
                 </span>
               </DataListCell>,
@@ -349,6 +354,7 @@ export const PartialImportDialog = (props: PartialImportProps) => {
               <StackItem>
                 <Text>{t("selectRealm")}:</Text>
                 <Select
+                  toggleId="realm-selector"
                   isOpen={isRealmSelectOpen}
                   onToggle={() => setIsRealmSelectOpen(!isRealmSelectOpen)}
                   onSelect={handleRealmSelect}
@@ -373,9 +379,9 @@ export const PartialImportDialog = (props: PartialImportProps) => {
                     "identity providers"
                   )}
                 {targetHasRealmRoles() &&
-                  resourceDataListItem("roles.realm", "realm roles")}
+                  resourceDataListItem("realmRoles", "realm roles")}
                 {targetHasClientRoles() &&
-                  resourceDataListItem("roles.client", "client roles")}
+                  resourceDataListItem("clientRoles", "client roles")}
               </DataList>
             </StackItem>
             <StackItem>
