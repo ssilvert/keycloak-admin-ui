@@ -69,8 +69,7 @@ export const JsonFileUpload = ({
         try {
           obj = JSON.parse(value as string);
         } catch (error) {
-          // Ignore.  We need to be lenient on things like
-          // "Unexpected end of JSON input".
+          console.warn("Invalid json, ignoring value using {}");
         }
 
         onChange(obj);
