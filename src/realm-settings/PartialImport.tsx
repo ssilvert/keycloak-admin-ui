@@ -200,7 +200,9 @@ export const PartialImportDialog = (props: PartialImportProps) => {
   };
 
   const targetHasRoles = () => {
-    return targetRealm && targetRealm.hasOwnProperty("roles");
+    return (
+      targetRealm && Object.prototype.hasOwnProperty.call(targetRealm, "roles")
+    );
   };
 
   const targetHasRealmRoles = () => {
@@ -214,7 +216,7 @@ export const PartialImportDialog = (props: PartialImportProps) => {
   const targetHasClientRoles = () => {
     return (
       targetHasRoles() &&
-      targetRealm.roles!.hasOwnProperty("client") &&
+      Object.prototype.hasOwnProperty.call(targetRealm.roles, "client") &&
       Object.keys(targetRealm.roles!.client!).length > 0
     );
   };
@@ -235,7 +237,7 @@ export const PartialImportDialog = (props: PartialImportProps) => {
 
   const clientRolesCount = (clientRoles: { [index: string]: [] }) => {
     let total = 0;
-    for (let clientName in clientRoles) {
+    for (const clientName in clientRoles) {
       total += clientRoles[clientName].length;
     }
     return total;
