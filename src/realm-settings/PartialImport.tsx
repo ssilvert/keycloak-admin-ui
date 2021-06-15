@@ -137,7 +137,6 @@ export const PartialImportDialog = (props: PartialImportProps) => {
     copyOfResourcesToImport[resource] = checked;
     setResourcesToImport(copyOfResourcesToImport);
     setIsAnyResourceChecked(resourcesChecked(copyOfResourcesToImport));
-    console.log(resourcesToImport);
   };
 
   const realmSelectOptions = () => {
