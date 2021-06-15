@@ -1,20 +1,10 @@
 import CreateRealmPage from "../support/pages/admin_console/CreateRealmPage";
 import SidebarPage from "../support/pages/admin_console/SidebarPage";
 import LoginPage from "../support/pages/LoginPage";
-import Masthead from "../support/pages/admin_console/Masthead";
 import PartialImportModal from "../support/pages/admin_console/configure/realm_settings/PartialImportModal";
 import RealmSettings from "../support/pages/admin_console/configure/realm_settings/RealmSettings";
 import { keycloakBefore } from "../support/util/keycloak_before";
 import AdminClient from "../support/util/AdminClient";
-
-/**
- * Simulates a paste event.
- *
- * @param pasteOptions Set of options for a simulated paste event.
- * @param pasteOptions.destinationSelector Selector representing the DOM element that the paste event should be dispatched to.
- * @param pasteOptions.pastePayload Simulated data that is on the clipboard.
- * @param pasteOptions.pasteFormat The format of the simulated paste payload. Default value is 'text'.
- */
 
 describe("Partial import test", () => {
   const TEST_REALM = "partial-import-test-realm";
