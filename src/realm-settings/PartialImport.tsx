@@ -104,40 +104,18 @@ export const PartialImportDialog = (props: PartialImportProps) => {
     resetInputState();
   }, [props.open]);
 
-  const handleClear = () => {
-    setImportEnabled(false);
-  };
-
   const handleFileChange = (value: object) => {
-    setImportEnabled(!!value);
-    setIsMultiRealm(false);
-    setImportedFile([]);
-    setTargetRealm({});
+    setIsFileSelected(!!value);
+    resetInputState();
 
-    // if user pressed clear button reset importEnabled
-    /*const nativeEvent = event.nativeEvent;
-    if (
-      nativeEvent instanceof MouseEvent &&
-      !(nativeEvent instanceof DragEvent)
-    ) {
-      setIsFileSelected(false);
-      return;
-    }*/
+    setImportedFile(value);
 
-    let rawContent: ImportedMultiRealm = [];
-    try {
-      setImportedFile(value);
-    } catch (error) {
-      // Ignore.  We need to be lenient on things like
-      // "Unexpected end of JSON input".
-    }
-
-    if (rawContent instanceof Array && rawContent.length > 0) {
-      setIsMultiRealm(rawContent.length > 1);
-      setTargetRealm(rawContent[0] || {});
+    if (value instanceof Array && value.length > 0) {
+      setIsMultiRealm(value.length > 1);
+      setTargetRealm(value[0] || {});
     } else {
       setIsMultiRealm(false);
-      setTargetRealm((rawContent as ImportedRealm) || {});
+      setTargetRealm((value as ImportedRealm) || {});
     }
   };
 
@@ -341,7 +319,6 @@ export const PartialImportDialog = (props: PartialImportProps) => {
           <JsonFileUpload
             id="partial-import-file"
             onChange={handleFileChange}
-            onClear={handleClear}
           />
         </StackItem>
 
